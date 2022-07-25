@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
@@ -32,3 +33,6 @@ Route::get('author/{author:username}', function (User $author) {
         'posts' => $author->posts
     ]);
 });
+
+Route::get('categories', [CategoryController::class, 'index']);
+Route::get('category/{category:slug}', [CategoryController::class, 'show']);
