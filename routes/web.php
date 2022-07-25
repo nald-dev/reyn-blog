@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,16 +21,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/posts', function () {
-    return view('posts', [
-        'title' => 'Posts',
-        'posts' => Post::latest()->get()
-    ]);
-});
+Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/post/{post:slug}', function (Post $post) {
-    return view('post', [
-        'title' => $post->title,
-        'post' => $post
-    ]);
-});
+Route::get('/post/{post:slug}', [PostController::class, 'show']);
