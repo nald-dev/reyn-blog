@@ -8,7 +8,7 @@
             </h2>
 
             <p>
-                By: <a href="#" class="text-decoration-none">{{ $post->author->name }}</a>
+                By: <a href="/author/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a>
             </p>
 
             <p>

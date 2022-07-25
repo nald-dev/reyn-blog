@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,10 @@ Route::get('/', function () {
 Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
+
+Route::get('author/{author:username}', function (User $author) {
+    return view('posts', [
+        'title' => 'Posts',
+        'posts' => $author->posts
+    ]);
+});
