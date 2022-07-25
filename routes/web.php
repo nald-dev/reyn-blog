@@ -20,7 +20,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/blog', function () {
+Route::get('/posts', function () {
     return view('blog', [
         'title' => 'Blog',
         'posts' => Post::latest()->get()
