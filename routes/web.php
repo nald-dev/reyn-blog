@@ -26,3 +26,10 @@ Route::get('/posts', function () {
         'posts' => Post::latest()->get()
     ]);
 });
+
+Route::get('/post/{post:slug}', function (Post $post) {
+    return view('post', [
+        'title' => $post->title,
+        'post' => $post
+    ]);
+});
