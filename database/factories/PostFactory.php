@@ -18,6 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => mt_rand(1, 4),
+            'category_id' => mt_rand(1, 2),
             'title' => fake()->sentence(mt_rand(2, 4)),
             'slug' => fake()->unique()->slug(),
             'excerpt' => fake()->sentence(10, 16),
