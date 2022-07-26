@@ -26,12 +26,12 @@ Route::get('/', function () {
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
-Route::get('author/{author:username}', function (User $author) {
+Route::get('/author/{author:username}', function (User $author) {
     return view('posts', [
-        'title' => 'Posts',
-        'posts' => $author->posts
+        'title' => "All posts by $author->name",
+        'posts' => $author->posts->load('author', 'category')
     ]);
 });
 
-Route::get('categories', [CategoryController::class, 'index']);
-Route::get('category/{category:slug}', [CategoryController::class, 'show']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/category/{category:slug}', [CategoryController::class, 'show']);

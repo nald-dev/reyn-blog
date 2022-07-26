@@ -1,9 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="mb-5">
-        <a href="/categories">See all categories</a>
-    </div>
+    @if ($title == 'Posts')
+        <div class="mb-5">
+            <a href="/categories">See all categories</a>
+        </div>
+    @endif
 
     @foreach ($posts as $post)
         @include('partials.post-item')
